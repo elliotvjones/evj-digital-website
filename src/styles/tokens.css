@@ -1,0 +1,21 @@
+:root {
+  /* Palette — strict black and white, no accent colour */
+  --bg: #000000;
+  --ink: #FFFFFF;
+  --muted: #8A8A8A;
+  --faint: #555555;
+  --hairline: #1C1C1C;
+  --ghost-border: #2E2E2E;
+
+  /* Motion — one curve everywhere */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-micro: 0.3s;
+  --duration-reveal-sm: 0.8s;
+  --duration-reveal-lg: 1.0s;
+  --duration-section-sm: 1.2s;
+  --duration-section-lg: 1.6s;
+  --stagger: 80ms;
+
+  /* Type */
+  --font-display: 'Archivo', sans-serif;
+}
