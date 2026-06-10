@@ -5,8 +5,10 @@ import Lenis from 'lenis';
 import './styles/tokens.css';
 import './styles/base.css';
 import './styles/sections/hero.css';
+import './styles/sections/orbit.css';
 
 import { initHero } from './sections/hero';
+import { initOrbit } from './sections/orbit';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -25,3 +27,4 @@ if (!reducedMotion) {
 }
 
 initHero(reducedMotion);
+initOrbit(reducedMotion);

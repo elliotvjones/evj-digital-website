@@ -7,6 +7,12 @@
   --hairline: #1C1C1C;
   --ghost-border: #2E2E2E;
 
+  /* Inverted surfaces (white cards on the black page) */
+  --card-bg: rgba(255, 255, 255, 0.96);
+  --card-ink: #0A0A0A;
+  --card-muted: #6E6E6E;
+  --card-radius: 12px;
+
   /* Motion — one curve everywhere */
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --duration-micro: 0.3s;
