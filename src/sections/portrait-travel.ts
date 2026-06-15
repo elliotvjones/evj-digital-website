@@ -101,7 +101,7 @@ export function initPortraitTravel(reducedMotion: boolean): void {
     start: 'top top',
     end: () => `+=${hero.offsetHeight + (brands?.offsetHeight ?? 0) + (trackRecord?.offsetHeight ?? 0) + window.innerHeight * PIN_DISTANCE_VH}`,
     scrub: true,
-    refreshInit: () => {
+    onRefreshInit: () => {
       if (!docked && !img.classList.contains('is-traveling')) {
         sourceRect = measureSourceRect();
       }
