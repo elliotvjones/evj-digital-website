@@ -18,7 +18,12 @@ export function initOrbit(reducedMotion: boolean): void {
 
   const isMobile = window.matchMedia(MOBILE_QUERY).matches;
 
-  if (reducedMotion || isMobile) {
+  if (isMobile) {
+    initMobileCarousel(section, cards, reducedMotion);
+    return;
+  }
+
+  if (reducedMotion) {
     cards.forEach((card) => card.classList.add('is-expanded'));
     return;
   }
@@ -72,4 +77,85 @@ export function initOrbit(reducedMotion: boolean): void {
     onUpdate: (self) => update(self.progress),
     onRefresh: (self) => update(self.progress),
   });
+}
+
+function initMobileCarousel(section: HTMLElement, cards: HTMLElement[], reducedMotion: boolean): void {
+  const track = section.querySelector<HTMLElement>('.orbit-cards');
+  if (!track) return;
+
+  track.setAttribute('tabindex', '0');
+
+  const dotsContainer = document.createElement('div');
+  dotsContainer.className = 'orbit-dots';
+  dotsContainer.setAttribute('aria-hidden', 'true');
+
+  const dots = cards.map((_, i) => {
+    const dot = document.createElement('span');
+    dot.className = 'orbit-dot';
+    if (i === 0) dot.classList.add('is-active');
+    dotsContainer.appendChild(dot);
+    return dot;
+  });
+
+  section.querySelector('.orbit-stage')?.appendChild(dotsContainer);
+
+  if (reducedMotion) {
+    cards.forEach((card) => card.classList.add('is-expanded'));
+  } else {
+    cards[0]?.classList.add('is-expanded');
+  }
+
+  let activeIndex = 0;
+  let ticking = false;
+
+  const update = (): void => {
+    ticking = false;
+
+    const trackRect = track.getBoundingClientRect();
+    const centerX = trackRect.left + trackRect.width / 2;
+
+    let closestIndex = 0;
+    let closestDist = Infinity;
+
+    cards.forEach((card, i) => {
+      const cardRect = card.getBoundingClientRect();
+      const cardCenter = cardRect.left + cardRect.width / 2;
+      const dist = Math.abs(cardCenter - centerX);
+
+      if (!reducedMotion) {
+        const norm = Math.min(dist / (trackRect.width / 2), 1);
+        const depth = 1 - norm;
+
+        card.style.setProperty('--orbit-scale', (0.85 + 0.15 * depth).toFixed(3));
+        card.style.setProperty('--orbit-opacity', (0.7 + 0.3 * depth).toFixed(3));
+        card.style.setProperty('--orbit-blur', `${Math.max(0, (1 - depth) * 1.5).toFixed(2)}px`);
+      }
+
+      if (dist < closestDist) {
+        closestDist = dist;
+        closestIndex = i;
+      }
+    });
+
+    if (closestIndex !== activeIndex) {
+      if (!reducedMotion) {
+        cards[activeIndex]?.classList.remove('is-expanded');
+        cards[closestIndex]?.classList.add('is-expanded');
+      }
+      dots[activeIndex]?.classList.remove('is-active');
+      dots[closestIndex]?.classList.add('is-active');
+      activeIndex = closestIndex;
+    }
+  };
+
+  const onScroll = (): void => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  };
+
+  track.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+
+  update();
 }

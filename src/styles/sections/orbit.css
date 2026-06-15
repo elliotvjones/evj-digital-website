@@ -145,85 +145,109 @@
   opacity: 0.6;
 }
 
+.orbit-dots {
+  display: none;
+}
+
+.orbit-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--card-ink);
+  opacity: 0.25;
+  transition: opacity var(--duration-micro) var(--ease), transform var(--duration-micro) var(--ease);
+}
+
+.orbit-dot.is-active {
+  opacity: 0.9;
+  transform: scale(1.3);
+}
+
 @media (max-width: 860px) {
   .orbit-stage {
     display: flex;
     flex-direction: column;
-    align-items: center;
     height: auto;
     overflow: visible;
-    gap: 48px;
-    padding: 96px 24px;
+    padding: 96px 0;
   }
 
   .orbit-figure {
-    position: static;
-    height: 60vh;
-    max-height: 480px;
-    transform: none !important;
+    display: none;
   }
 
   .orbit-cards {
     position: static;
     display: flex;
-    width: 100%;
-    max-width: 480px;
-    flex-direction: column;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 7.5vw;
+    padding-inline: 7.5vw;
+    touch-action: pan-x;
+    overscroll-behavior-x: contain;
     gap: 16px;
   }
 
   .orbit-card,
   .orbit-card.is-expanded {
     position: static;
-    width: 100% !important;
-    transform: none !important;
-    opacity: 1 !important;
-    filter: none !important;
+    flex: 0 0 85vw;
+    width: 85vw !important;
+    scroll-snap-align: center;
     z-index: auto !important;
+    transform: scale(var(--orbit-scale, 0.85));
+    opacity: var(--orbit-opacity, 0.7);
+    filter: blur(var(--orbit-blur, 1px));
+    transition:
+      transform var(--duration-micro) var(--ease),
+      opacity var(--duration-micro) var(--ease),
+      filter var(--duration-micro) var(--ease);
+    will-change: transform, opacity, filter;
   }
 
-  .orbit-card-detail,
-  .orbit-card.is-expanded .orbit-card-detail {
-    max-height: none;
-    border-top-color: var(--hairline);
-    opacity: 1;
+  .orbit-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 24px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .orbit-figure {
-    position: static;
-    height: 60vh;
-    max-height: 480px;
-    transform: none !important;
-  }
-
-  .orbit-card {
-    position: static;
-    width: 100% !important;
-    max-width: 480px;
-    margin: 0 auto;
-    transform: none !important;
-    opacity: 1 !important;
-    filter: none !important;
-    z-index: auto !important;
-  }
-
-  .orbit-cards {
-    position: static;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    padding: 0 24px 96px;
+    display: none;
   }
 
   .orbit-stage {
     display: flex;
     flex-direction: column;
-    align-items: center;
     height: auto;
     overflow: visible;
-    padding-top: 96px;
+    padding: 96px 0;
+  }
+
+  .orbit-cards {
+    position: static;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 7.5vw;
+    padding-inline: 7.5vw;
+    touch-action: pan-x;
+    overscroll-behavior-x: contain;
+    gap: 16px;
+  }
+
+  .orbit-card,
+  .orbit-card.is-expanded {
+    position: static;
+    flex: 0 0 85vw;
+    width: 85vw !important;
+    scroll-snap-align: center;
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+    z-index: auto !important;
   }
 
   .orbit-card-detail,
@@ -231,5 +255,9 @@
     max-height: none;
     border-top-color: var(--hairline);
     opacity: 1;
+  }
+
+  .orbit-dots {
+    display: none;
   }
 }

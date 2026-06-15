@@ -5,10 +5,14 @@ import Lenis from 'lenis';
 import './styles/tokens.css';
 import './styles/base.css';
 import './styles/sections/hero.css';
+import './styles/sections/brands.css';
+import './styles/sections/track-record.css';
 import './styles/sections/orbit.css';
 
 import { initHero } from './sections/hero';
+import { initTrackRecord } from './sections/track-record';
 import { initOrbit } from './sections/orbit';
+import { initPortraitTravel } from './sections/portrait-travel';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -27,4 +31,6 @@ if (!reducedMotion) {
 }
 
 initHero(reducedMotion);
+initTrackRecord(reducedMotion);
 initOrbit(reducedMotion);
+initPortraitTravel(reducedMotion);
