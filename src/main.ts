@@ -8,11 +8,13 @@ import './styles/sections/hero.css';
 import './styles/sections/brands.css';
 import './styles/sections/track-record.css';
 import './styles/sections/orbit.css';
+import './styles/sections/contact.css';
 
 import { initHero } from './sections/hero';
 import { initTrackRecord } from './sections/track-record';
 import { initOrbit } from './sections/orbit';
 import { initPortraitTravel } from './sections/portrait-travel';
+import { initContact } from './sections/contact';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -34,3 +36,4 @@ initHero(reducedMotion);
 initTrackRecord(reducedMotion);
 initOrbit(reducedMotion);
 initPortraitTravel(reducedMotion);
+initContact(reducedMotion);

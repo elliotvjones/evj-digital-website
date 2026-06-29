@@ -1,0 +1,104 @@
+.contact {
+  position: relative;
+  z-index: 110;
+  background: var(--bg);
+  padding: 140px 56px;
+}
+
+.contact-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity var(--duration-reveal-sm) var(--ease), transform var(--duration-reveal-sm) var(--ease);
+}
+
+.contact.is-visible .contact-inner {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.contact .eyebrow {
+  font-size: 11px; letter-spacing: 0.38em; color: var(--muted); font-weight: 500;
+  margin-bottom: 28px;
+}
+
+.contact h2 {
+  font-size: clamp(40px, 5.5vw, 72px);
+  font-weight: 620; font-stretch: 118%;
+  line-height: 1.05; letter-spacing: -0.022em;
+}
+
+.contact h2 .line { display: block; }
+
+.contact .sub {
+  margin: 30px auto 0;
+  max-width: 42ch;
+  color: var(--muted);
+  font-size: 16px; line-height: 1.65; font-weight: 400;
+}
+
+.contact-email {
+  display: inline-block;
+  margin-top: 40px;
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 620; font-stretch: 118%;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-color: var(--ghost-border);
+  transition: text-decoration-color var(--duration-micro) var(--ease);
+}
+
+.contact-email:hover,
+.contact-email:focus-visible {
+  text-decoration-color: var(--ink);
+}
+
+.contact-socials {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 32px;
+}
+
+.contact-socials a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  transition: color var(--duration-micro) var(--ease);
+}
+
+.contact-socials a:hover,
+.contact-socials a:focus-visible {
+  color: var(--ink);
+}
+
+.contact-legal {
+  margin-top: 48px;
+}
+
+.contact-legal p {
+  color: var(--faint);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+@media (max-width: 860px) {
+  .contact { padding: 96px 24px; }
+
+  .contact-socials {
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-inner {
+    opacity: 1;
+    transform: none;
+  }
+}
