@@ -71,6 +71,7 @@ h1 .line:nth-child(2) span { animation-delay: 0.68s; }
 .btn {
   font-family: inherit; font-size: 14px; font-weight: 500; letter-spacing: 0.02em;
   padding: 15px 30px; border-radius: 4px; cursor: pointer;
+  display: inline-block; text-decoration: none;
   transition: transform 0.35s var(--ease), background var(--duration-micro) var(--ease), color var(--duration-micro) var(--ease);
   will-change: transform;
 }

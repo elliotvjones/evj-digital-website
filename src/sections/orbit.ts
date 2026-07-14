@@ -1,6 +1,6 @@
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-const CARD_COUNT = 6;
+const CARD_COUNT = 5;
 const ELLIPSE_RY = 90;
 const ELLIPSE_RX_VW = 0.38;
 const ELLIPSE_RX_MAX = 520;
