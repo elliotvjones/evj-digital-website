@@ -4,7 +4,7 @@ const CARD_COUNT = 5;
 const ELLIPSE_RY = 90;
 const ELLIPSE_RX_VW = 0.38;
 const ELLIPSE_RX_MAX = 520;
-const ELLIPSE_CENTER_Y = 0.68;
+const ELLIPSE_CENTER_Y = 0.58;
 const PIN_DISTANCE_VH = 4;
 
 const MOBILE_QUERY = '(max-width: 860px)';

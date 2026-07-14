@@ -109,7 +109,7 @@
 }
 
 .orbit-card.is-expanded .orbit-card-detail {
-  max-height: 340px;
+  max-height: 200px;
   border-top-color: var(--hairline);
   opacity: 1;
 }
