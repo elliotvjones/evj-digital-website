@@ -15,6 +15,7 @@ import { initTrackRecord } from './sections/track-record';
 import { initOrbit } from './sections/orbit';
 import { initPortraitTravel } from './sections/portrait-travel';
 import { initContact } from './sections/contact';
+import { initNavDropdowns } from './sections/nav';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -37,3 +38,4 @@ initTrackRecord(reducedMotion);
 initOrbit(reducedMotion);
 initPortraitTravel(reducedMotion);
 initContact(reducedMotion);
+initNavDropdowns();

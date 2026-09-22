@@ -12,6 +12,7 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         relo: resolve(__dirname, 'relo-proposal.html'),
         eventsy: resolve(__dirname, 'investors-eventsy.html'),
+        watches: resolve(__dirname, 'watches.html'),
       },
     },
   },
