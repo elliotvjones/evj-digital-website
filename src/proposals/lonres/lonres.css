@@ -1,0 +1,100 @@
+/*
+  Co-brand tokens. EVJ Digital supplies the neutral base (black, white, greys);
+  LonRes supplies the accent and type. LonRes values are taken from the
+  Elementor global styles on lonres.com (September 2026).
+*/
+:root {
+  /* LonRes */
+  --lr-accent: #E0157A;
+  --lr-accent-hover: #C4106A;
+  --lr-accent-soft: #FCE8F2;
+  --lr-accent-line: #F6C3DD;
+  --lr-ink: #1E1E1E;
+  --lr-text: #535353;
+  --lr-secondary: #444444;
+
+  /* EVJ Digital */
+  --evj-black: #0a0a0a;
+  --evj-paper: #F8F7F4;
+  --evj-line: #E7E5E0;
+  --evj-muted: #71717a;
+
+  --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  --font-label: 'DM Sans', 'Inter', -apple-system, sans-serif;
+}
+
+.lr-root {
+  font-family: var(--font-body);
+  color: var(--evj-black);
+  background: var(--evj-paper);
+}
+
+.lr-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  font-variant-numeric: lining-nums;
+}
+
+.lr-label {
+  font-family: var(--font-label);
+  font-weight: 700;
+  font-size: 11px;
+  line-height: 1.6;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+/* Visible keyboard focus everywhere, in the LonRes accent */
+.lr-root :focus-visible {
+  outline: 2px solid var(--lr-accent);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Names in supplied screenshots and hidden registrants */
+.lr-blur {
+  filter: blur(6px);
+  user-select: none;
+}
+
+.lr-scroll-x {
+  scrollbar-width: none;
+}
+.lr-scroll-x::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .lr-root *,
+  .lr-root *::before,
+  .lr-root *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* WhatsApp thread in "The problem": a slow upward loop over two copies of the thread */
+@keyframes lr-thread-scroll {
+  from { transform: translateY(0); }
+  to { transform: translateY(-50%); }
+}
+.lr-thread-track {
+  animation: lr-thread-scroll 55s linear infinite;
+}
+.lr-thread-track[data-paused='true'],
+.lr-thread:hover .lr-thread-track,
+.lr-thread:focus-within .lr-thread-track {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .lr-root .lr-thread-track {
+    animation: none !important;
+  }
+}
+

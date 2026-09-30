@@ -3,6 +3,7 @@ export default {
   content: [
     './relo-proposal.html',
     './investors-eventsy.html',
+    './lonres-proposal.html',
     './src/proposals/**/*.{js,jsx,ts,tsx}',
   ],
   theme: {
