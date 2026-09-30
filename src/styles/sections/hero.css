@@ -38,6 +38,57 @@ nav {
 .nav-links a:hover,
 .nav-links a:focus-visible { color: var(--ink); }
 
+.nav-dropdown {
+  position: relative;
+  opacity: 0;
+  animation: fadein 0.6s var(--ease) 1.82s forwards;
+}
+
+.nav-dropdown-trigger {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: inherit; background: none; border: none; padding: 0; cursor: pointer;
+  color: var(--muted); font-size: 13px; letter-spacing: 0.04em;
+  transition: color var(--duration-micro) var(--ease);
+}
+
+.nav-dropdown-trigger .chevron {
+  transition: transform var(--duration-micro) var(--ease);
+}
+
+.nav-dropdown-trigger:hover,
+.nav-dropdown-trigger:focus-visible,
+.nav-dropdown.is-open .nav-dropdown-trigger { color: var(--ink); }
+
+.nav-dropdown:hover .nav-dropdown-trigger .chevron,
+.nav-dropdown.is-open .nav-dropdown-trigger .chevron { transform: rotate(180deg); }
+
+.nav-dropdown-menu {
+  position: absolute; top: calc(100% + 18px); right: 0; min-width: 168px;
+  background: var(--bg); border: 1px solid var(--ghost-border); border-radius: 8px;
+  padding: 6px;
+  opacity: 0; visibility: hidden; transform: translateY(-6px);
+  transition: opacity var(--duration-micro) var(--ease), transform var(--duration-micro) var(--ease), visibility 0s var(--duration-micro);
+}
+
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown:focus-within .nav-dropdown-menu,
+.nav-dropdown.is-open .nav-dropdown-menu {
+  opacity: 1; visibility: visible; transform: translateY(0);
+  transition: opacity var(--duration-micro) var(--ease), transform var(--duration-micro) var(--ease);
+}
+
+.nav-dropdown-menu a {
+  display: block; padding: 9px 10px; border-radius: 4px;
+  font-size: 13px; color: var(--muted); text-decoration: none;
+  opacity: 1; animation: none;
+  transition: color var(--duration-micro) var(--ease), background var(--duration-micro) var(--ease);
+}
+
+.nav-dropdown-menu a:hover,
+.nav-dropdown-menu a:focus-visible {
+  color: var(--ink); background: rgba(255, 255, 255, 0.06);
+}
+
 .stage {
   flex: 1; display: grid; grid-template-columns: 1.05fr 0.95fr;
   align-items: center; padding: 0 56px; position: relative;
@@ -60,6 +111,7 @@ h1 .line span {
 }
 h1 .line:nth-child(1) span { animation-delay: 0.55s; }
 h1 .line:nth-child(2) span { animation-delay: 0.68s; }
+h1 .line:nth-child(3) span { animation-delay: 0.81s; }
 @keyframes rise { to { transform: translateY(0); } }
 
 .sub {

@@ -1,0 +1,118 @@
+.watches-intro {
+  padding: 64px 56px 88px;
+  max-width: 920px;
+}
+
+.watches-intro .eyebrow { margin-bottom: 24px; }
+
+.watches-intro h1 {
+  font-size: clamp(32px, 4.6vw, 64px);
+  margin-bottom: 22px;
+}
+
+.watches-intro h1 s {
+  color: var(--muted);
+  text-decoration-thickness: 2px;
+}
+
+.watches-showcase {
+  display: flex;
+  gap: 28px;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 56px 140px;
+}
+
+.watches-showcase-panel {
+  position: relative;
+  flex: 1 1 50%;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity var(--duration-section-lg) var(--ease), transform var(--duration-section-lg) var(--ease);
+}
+
+.watches-showcase-panel.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.watches-showcase-panel img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.02);
+  transition: transform 1.4s var(--ease);
+}
+
+.watches-showcase-panel:hover img {
+  transform: scale(1.06);
+}
+
+.watches-showcase-caption {
+  position: absolute;
+  left: 20px;
+  bottom: 18px;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  z-index: 2;
+}
+
+.watches-showcase-index {
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--muted);
+}
+
+.watches-showcase-label {
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+@media (max-width: 860px) {
+  .watches-intro { padding: 48px 24px 56px; }
+
+  .watches-showcase {
+    flex-direction: column;
+    padding: 0 24px 96px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .watches-showcase-panel {
+    opacity: 1;
+    transform: none;
+  }
+
+  .watches-showcase-panel img {
+    transform: none;
+  }
+}
+
+.watches-footer {
+  padding: 40px 56px 56px;
+  text-align: center;
+}
+
+.watches-footer p {
+  color: var(--faint);
+  font-size: 12px;
+}
+
+.watches-footer a {
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--duration-micro) var(--ease);
+}
+
+.watches-footer a:hover,
+.watches-footer a:focus-visible {
+  color: var(--ink);
+}

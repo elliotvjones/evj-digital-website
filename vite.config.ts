@@ -13,6 +13,7 @@ export default defineConfig({
         relo: resolve(__dirname, 'relo-proposal.html'),
         eventsy: resolve(__dirname, 'investors-eventsy.html'),
         lonres: resolve(__dirname, 'lonres-proposal.html'),
+        watches: resolve(__dirname, 'watches.html'),
       },
     },
   },
